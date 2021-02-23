@@ -2,10 +2,20 @@ import styled from "styled-components";
 
 export const Title = styled.h1`
     font-size: 32px;
-    color: #000;
+    color: #fafafa;
 `;
 
 export const Subtitle = styled.h2`
     font-size: .75rem;
 `;
 
+export const Link = styled.a`
+    text-decoration: none;
+    color: #fafafa;
+    transition: .4s;
+
+    &:hover{
+        color: #ccc;
+    }
+    
+`;
