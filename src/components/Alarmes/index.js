@@ -3,7 +3,7 @@ import api from "../../services/api";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
 import { CardWrapper } from "../Card/styles";
-import { Alarme } from "../Card/Alarme.js";
+import { Alarme } from "../Card/alarme.js";
 import EmptyState from "../EmptyState";
 import { useError } from "../../contexts/ErrorContext";
 

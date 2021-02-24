@@ -4,7 +4,7 @@ import { useError } from "../../contexts/ErrorContext";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
 import { CardWrapper } from "../Card/styles";
-import { AlarmeAtuado } from "../Card/AlarmeAtuado";
+import { AlarmeAtuado } from "../Card/alarmeAtuado";
 import { SearchInput } from "../SearchInput";
 import { Select } from "../Select";
 import EmptyState from "../EmptyState";
