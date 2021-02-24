@@ -3,7 +3,7 @@ import { StyledCard } from "./styles";
 import Loader from "react-loader-spinner";
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";
-
+import formatDate from "../../utils/date";
 import api from "../../services/api";
 
 
@@ -69,11 +69,3 @@ export function AlarmeAtuado(props) {
 
 
 
-const formatDate = date => {
-    const splitDate = date.split("T")[0];
-    const year = splitDate.split("-")[0];
-    const month = splitDate.split("-")[1];
-    const day = splitDate.split("-")[2];
-
-    return (day + "/" + month + "/" + year);
-}
