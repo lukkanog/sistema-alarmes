@@ -17,10 +17,11 @@ export default function Home() {
 
         <Wrapper>
           <Wrapper.Container>
-            <AlarmesAtuados></AlarmesAtuados>
+            <Subtitle>Alarmes Atuados</Subtitle>
           </Wrapper.Container>
         </Wrapper>
 
+        <AlarmesAtuados />
 
       </main>
     </div>

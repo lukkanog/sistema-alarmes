@@ -6,7 +6,7 @@ export const Title = styled.h1`
 `;
 
 export const Subtitle = styled.h2`
-    font-size: .75rem;
+    font-size: 1.25rem;
 `;
 
 export const Link = styled.a`

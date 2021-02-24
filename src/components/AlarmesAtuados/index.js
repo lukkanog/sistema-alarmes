@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
+import { Card, CardWrapper } from "../Card";
 
 
 function AlarmesAtuados() {
@@ -13,8 +14,6 @@ function AlarmesAtuados() {
     }, [])
 
     const loadData = async () => {
-        
-
         await api.get("alarmesatuados")
             .then(response => setAlarmes(response.data))
             .catch(err => console.log(err))
@@ -26,19 +25,23 @@ function AlarmesAtuados() {
         <Wrapper>
             <Wrapper.Container>
 
-                <LoaderSpinner visible={isLoading} text="Carregando alarmes atuados"/>
+                <LoaderSpinner visible={isLoading} text="Carregando alarmes atuados" />
 
-                {alarmes.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            {item.alarme.descricao}
-                        </div>
-                    )
-                })}
+                <CardWrapper>
+
+                    {alarmes.map((item, index) => {
+                        return (
+                            <Card key={index} alarme={item}>
+                                {item.alarme.descricao}
+                            </Card>
+                        )
+                    })}
+
+                </CardWrapper>
 
             </Wrapper.Container>
         </Wrapper>
     )
 }
 
-export default AlarmesAtuados
+export default AlarmesAtuados;
