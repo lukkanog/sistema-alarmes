@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
-import { Card, CardWrapper } from "../Card";
+import { AlarmeAtuado, CardWrapper } from "../Card";
 
 
 function AlarmesAtuados() {
@@ -16,9 +16,9 @@ function AlarmesAtuados() {
     const loadData = async () => {
         await api.get("alarmesatuados")
             .then(response => setAlarmes(response.data))
+            .then(setLoading(false))
             .catch(err => console.log(err))
 
-        setLoading(false);
     }
 
     return (
@@ -30,11 +30,7 @@ function AlarmesAtuados() {
                 <CardWrapper>
 
                     {alarmes.map((item, index) => {
-                        return (
-                            <Card key={index} alarme={item}>
-                                {item.alarme.descricao}
-                            </Card>
-                        )
+                        return <AlarmeAtuado key={index} alarme={item} />
                     })}
 
                 </CardWrapper>

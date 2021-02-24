@@ -3,11 +3,14 @@ import styled from "styled-components";
 export const StyledCard = styled.div`
     background-color: #fff;
     padding: 1em;
-    box-shadow: 5px 5px 10px #00000090;
+    box-shadow: 5px 5px 10px  #00000090;
     width: 280px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-around; */
+    transition: .4s;
+
+    &:hover{
+        box-shadow: 5px 5px 10px #ED6A5A90;
+    }
+
 `;
 
 StyledCard.Title = styled.h3`
@@ -17,16 +20,23 @@ StyledCard.Title = styled.h3`
 `;
 
 StyledCard.PropName = styled.p`
-    color: #777;
+    color: #999;
     font-size: .85rem;
 
 `;
 
 StyledCard.Prop = styled.p`
     margin-top: -.4rem;
-    line-height: .5rem;
+    line-height: .4rem;
     font-size: 1.25rem;
 `;
+
+StyledCard.FlexGroup = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
 
 export const StyledCardWrapper = styled.div`
     width: 100%;
