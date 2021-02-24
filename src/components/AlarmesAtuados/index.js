@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
+import { useError } from "../../contexts/ErrorContext";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
 import { CardWrapper } from "../Card/styles";
-import { AlarmeAtuado } from "../Card/alarmeAtuado";
+import { AlarmeAtuado } from "../Card/AlarmeAtuado";
 import { SearchInput } from "../SearchInput";
 import { Select } from "../Select";
 import EmptyState from "../EmptyState";
+
 
 
 
@@ -14,6 +16,7 @@ function AlarmesAtuados() {
     const [alarmes, setAlarmes] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [sortType, setSortType] = useState('idAlarmeAtuado');
+    const { setError } = useError();
 
 
     useEffect(() => {
@@ -36,7 +39,7 @@ function AlarmesAtuados() {
         await api.get("alarmesatuados")
             .then(response => setAlarmes(response.data))
             .then(() => setLoading(false))
-            .catch(err => console.log(err))
+            .catch(err => setError(err))
     }
 
     const handleTextFilter = (e) => {

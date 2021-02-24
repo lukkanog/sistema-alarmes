@@ -8,7 +8,6 @@ export function Equipamento(props) {
     const { idEquipamento, nomeEquipamento, tipo, dataCadastro, numeroSerie } = props.equipamento;
 
 
-
     return (
         <StyledCard>
             <StyledCard.Title>EQUIPAMENTO #{idEquipamento}</StyledCard.Title>

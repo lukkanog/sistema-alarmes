@@ -1,16 +1,19 @@
 import Head from "next/head";
-import { Title, Subtitle } from "../../components/Text";
+import { Subtitle } from "../../components/Text";
 import { Wrapper } from "../../components/Wrapper";
 import Header from "../../components/Header";
 import Equipamentos from "../../components/Equipamentos";
+import ErrorProvider from "../../contexts/ErrorContext";
+
 
 export default function EquipamentosPage() {
   return (
     <div className="Equipamentos">
+      <ErrorProvider>
 
-      <Head>
-        <title>Equipamentos | Treetech Teste Prático</title>
-      </Head>
+        <Head>
+          <title>Equipamentos | Treetech Teste Prático</title>
+        </Head>
 
         <main>
           <Header />
@@ -24,6 +27,8 @@ export default function EquipamentosPage() {
           <Equipamentos />
 
         </main>
+
+      </ErrorProvider>
     </div>
   )
 }

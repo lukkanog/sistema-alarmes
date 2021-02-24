@@ -5,13 +5,15 @@ import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 import formatDate from "../../utils/date";
 import api from "../../services/api";
-
+import { useError } from "../../contexts/ErrorContext";
 
 
 export function AlarmeAtuado(props) {
     const { alarme, idAlarmeAtuado, dataEntrada, dataSaida, ativo } = props.alarme;
 
     const [ loading, setLoading ] = useState(false);
+
+    const { setError } = useError();
 
 
     const handleToggleChange = async (id) => {
@@ -22,7 +24,7 @@ export function AlarmeAtuado(props) {
             .then(setTimeout(() => {
                 setLoading(false);
             }, 2000))
-            .catch(error => console.log(error))
+            .catch(error => setError(error))
 
     }
 
@@ -66,6 +68,3 @@ export function AlarmeAtuado(props) {
         </StyledCard>
     )
 }
-
-
-

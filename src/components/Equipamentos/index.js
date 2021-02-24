@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
+import { useError } from "../../contexts/ErrorContext";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
 import { CardWrapper } from "../Card/styles";
@@ -11,6 +12,7 @@ import EmptyState from "../EmptyState";
 function Equipamentos() {
     const [equipamentos, setEquipamentos] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const { setError } = useError();
 
 
     useEffect(() => {
@@ -22,7 +24,7 @@ function Equipamentos() {
         await api.get("equipamentos")
             .then(response => setEquipamentos(response.data))
             .then(() => setLoading(false))
-            .catch(err => console.log(err))
+            .catch(err => setError(err))
     }
 
 

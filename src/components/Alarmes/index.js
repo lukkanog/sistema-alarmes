@@ -3,15 +3,16 @@ import api from "../../services/api";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
 import { CardWrapper } from "../Card/styles";
-import { Alarme } from "../Card/alarme.js";
+import { Alarme } from "../Card/Alarme.js";
 import EmptyState from "../EmptyState";
+import { useError } from "../../contexts/ErrorContext";
 
 
 
 function Alarmes() {
     const [alarmes, setAlarmes] = useState([]);
     const [isLoading, setLoading] = useState(true);
-
+    const { setError } = useError();
 
     useEffect(() => {
         loadData();
@@ -22,7 +23,7 @@ function Alarmes() {
         await api.get("alarmes")
             .then(response => handleData(response.data))
             .then(() => setLoading(false))
-            .catch(err => console.log(err))
+            .catch(err => setError(err))
     }
 
     const handleData = (data) => {
