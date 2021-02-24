@@ -21,7 +21,7 @@ npm install
 ou  
 
 ```
-yarn add 
+yarn
 ```  
 3. Em seguida, execute o comando:
 ```
