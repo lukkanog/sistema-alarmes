@@ -4,7 +4,7 @@ export const LoaderWrapper = styled.div`
     width: 100%;
     background-color: #11111190;
     backdrop-filter: blur(10px);
-    height: 100%;
+    height: 120vh;
     position: absolute;
     left : 0;
     top: 5.5rem;
@@ -22,6 +22,7 @@ export const LoaderWrapper = styled.div`
 export const LoaderText = styled.p`
     color: #fafafa;
     text-align: center;
+    padding-bottom: calc(20vh + 5.5rem);
 `;
 
 
