@@ -16,7 +16,7 @@ function AlarmesAtuados() {
     const loadData = async () => {
         await api.get("alarmesatuados")
             .then(response => setAlarmes(response.data))
-            .then(setLoading(false))
+            .then(() => setLoading(false))
             .catch(err => console.log(err))
 
     }

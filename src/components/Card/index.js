@@ -20,15 +20,17 @@ export function CardWrapper(props) {
 export function AlarmeAtuado(props) {
     const { alarme, idAlarmeAtuado, dataEntrada, dataSaida, ativo } = props.alarme;
 
-    const [loading, setLoading ] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const handleToggleChange = async(id) => {
+    const handleToggleChange = async (id) => {
         setLoading(true);
 
         await api.patch(`alarmesatuados/${id}`)
-        .then(response => console.log(response.data))
-        .then(setLoading(false))
-        .catch(error => console.log(error))
+            .then(response => console.log(response.data))
+            .then(setTimeout(() => {
+                setLoading(false)
+            }, 2000))
+            .catch(error => console.log(error))
 
     }
 
