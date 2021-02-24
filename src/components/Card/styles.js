@@ -6,6 +6,8 @@ export const StyledCard = styled.div`
     box-shadow: 5px 5px 10px  #00000090;
     width: 280px;
     transition: .4s;
+    margin: 1em 0%;
+
 
     &:hover{
         box-shadow: 5px 5px 10px #ED6A5A90;

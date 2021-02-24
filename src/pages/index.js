@@ -12,18 +12,18 @@ export default function Home() {
         <title>Alarmes Atuados | Treetech Teste Prático</title>
       </Head>
 
-      <main>
-        <Header />
+        <main>
+          <Header />
 
-        <Wrapper>
-          <Wrapper.Container>
-            <Subtitle>Alarmes Atuados</Subtitle>
-          </Wrapper.Container>
-        </Wrapper>
+          <Wrapper>
+            <Wrapper.Container>
+              <Subtitle>Alarmes Atuados</Subtitle>
+            </Wrapper.Container>
+          </Wrapper>
 
-        <AlarmesAtuados />
+          <AlarmesAtuados />
 
-      </main>
+        </main>
     </div>
   )
 }
