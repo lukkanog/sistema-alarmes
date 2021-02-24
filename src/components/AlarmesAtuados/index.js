@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
-import { AlarmeAtuado, CardWrapper } from "../Card";
+import { CardWrapper } from "../Card/styles";
+import { AlarmeAtuado } from "../Card/alarmeAtuado";
 import { SearchInput } from "../SearchInput";
 import { Select } from "../Select";
 import EmptyState from "../EmptyState";
@@ -19,19 +20,23 @@ function AlarmesAtuados() {
         loadData();
     }, [])
 
+    //para mudanças de ordenação
     useEffect(() => {
-        const sortItems = (a, b) => {
-            return (a[sortType] > b[sortType]) ? 1 : ((b[sortType] > a[sortType]) ? -1 : 0);
-        };
+
+        const sortItems = (a, b) =>  a[sortType] > b[sortType] ? -1 : 1;
+        
 
         setAlarmes([...alarmes].sort(sortItems));
+
+
     }, [sortType]);
+    
 
     const loadData = async () => {
         await api.get("alarmesatuados")
             .then(response => setAlarmes(response.data))
             .then(() => setLoading(false))
-            .catch(err => setError(err.response.data))
+            .catch(err => console.log(err))
     }
 
     const handleTextFilter = (e) => {
@@ -52,25 +57,22 @@ function AlarmesAtuados() {
 
                 <LoaderSpinner visible={isLoading} text="Carregando alarmes atuados" />
 
-
-                <label>
-                    Ordenar por
-                    <Select value={sortType} onChange={(e) => setSortType(e.target.value)}>
-                        <option value="idAlarmeAtuado">Ordenação padrão</option>
-                        <option value="dataEntrada">Data de entrada</option>
-                        <option value="dataSaida">Data de saída</option>
-                        {/* <option value="alarme.descricao">Descrição do alarme</option>
-                        <option value="alarme.equipamento.nomeEquipamento">Descrição do equipamento</option> */}
-                    </Select>
-                </label>
+                <Select value={sortType} onChange={(e) => setSortType(e.target.value)}>
+                    <option value="idAlarmeAtuado">Ordenação padrão</option>
+                    <option value="dataEntrada">Data de entrada</option>
+                    <option value="dataSaida">Data de saída</option>
+                    
+                    {/* fixme */}
+                    {/* <option value="ativo">Status</option> */}
+                    {/* <option value="alarme">Descrição do alarme</option> */}
+                    {/* <option value="equipamento">Descrição do equipamento</option> */}
+                </Select>
 
                 <SearchInput onChange={handleTextFilter} name="search" id="search" placeholder="Insira a descrição do alarme procurado" />
 
                 <CardWrapper>
 
-                    {alarmes.map((item, index) => {
-                        return <AlarmeAtuado key={index} alarme={item} />
-                    })}
+                    {alarmes.map((item, index) => <AlarmeAtuado key={index} alarme={item} />)}
 
                     {!alarmes.length > 0 ? <EmptyState /> : null}
 

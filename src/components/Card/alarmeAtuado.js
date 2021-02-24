@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import { StyledCard, StyledCardWrapper } from "./styles";
+import { StyledCard } from "./styles";
 import Loader from "react-loader-spinner";
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 
 import api from "../../services/api";
 
-
-
-export function CardWrapper(props) {
-    return (
-        <StyledCardWrapper>
-            {props.children}
-        </StyledCardWrapper>
-    )
-}
 
 
 export function AlarmeAtuado(props) {
@@ -31,7 +22,7 @@ export function AlarmeAtuado(props) {
             .then(setTimeout(() => {
                 setLoading(false);
             }, 2000))
-            .catch(error => setError(error))
+            .catch(error => console.log(error))
 
     }
 

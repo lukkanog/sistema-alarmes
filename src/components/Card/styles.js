@@ -40,7 +40,7 @@ StyledCard.FlexGroup = styled.div`
 `;
 
 
-export const StyledCardWrapper = styled.div`
+export const CardWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;

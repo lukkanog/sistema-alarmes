@@ -10,4 +10,10 @@ export const Select = styled.select`
     height:30px;
     border:1px solid #ddd;
     margin: 1rem;
+    margin-left: 0;
+    padding-left: .25rem;
+
+    &:hover{
+        cursor: pointer;
+    }
 `;
