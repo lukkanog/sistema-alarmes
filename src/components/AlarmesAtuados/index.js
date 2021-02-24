@@ -3,6 +3,9 @@ import api from "../../services/api";
 import { Wrapper } from "../Wrapper";
 import LoaderSpinner from "../Loader";
 import { AlarmeAtuado, CardWrapper } from "../Card";
+import { SearchInput } from "../SearchInput";
+import { Select } from "../Select";
+import EmptyState from "../EmptyState";
 
 
 
@@ -32,7 +35,7 @@ function AlarmesAtuados() {
     }
 
     const handleTextFilter = (e) => {
-        if (!e.target.value){
+        if (!e.target.value) {
             loadData();
         }
 
@@ -48,28 +51,28 @@ function AlarmesAtuados() {
             <Wrapper.Container>
 
                 <LoaderSpinner visible={isLoading} text="Carregando alarmes atuados" />
-                
+
 
                 <label>
-                    Ordenar por 
-                    <br/>
-                    <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
+                    Ordenar por
+                    <Select value={sortType} onChange={(e) => setSortType(e.target.value)}>
                         <option value="idAlarmeAtuado">Ordenação padrão</option>
                         <option value="dataEntrada">Data de entrada</option>
                         <option value="dataSaida">Data de saída</option>
                         {/* <option value="alarme.descricao">Descrição do alarme</option>
                         <option value="alarme.equipamento.nomeEquipamento">Descrição do equipamento</option> */}
-                    </select>
+                    </Select>
                 </label>
 
-
-                <input onChange={handleTextFilter} type="text" name="search" id="search" placeholder="Insira a descrição do alarme procurado"></input>
+                <SearchInput onChange={handleTextFilter} name="search" id="search" placeholder="Insira a descrição do alarme procurado" />
 
                 <CardWrapper>
 
                     {alarmes.map((item, index) => {
                         return <AlarmeAtuado key={index} alarme={item} />
                     })}
+
+                    {!alarmes.length > 0 ? <EmptyState /> : null}
 
                 </CardWrapper>
 
