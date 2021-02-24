@@ -39,6 +39,17 @@ StyledCard.FlexGroup = styled.div`
     justify-content: space-between;
 `;
 
+StyledCard.Alert = styled.p`
+    padding: .25rem;
+    background-color: #ED6A5A;
+    left: 0;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    left: -1em;
+    padding-left: 1em;
+`;
+
 
 export const CardWrapper = styled.div`
     width: 100%;

@@ -20,9 +20,17 @@ function Alarmes() {
 
     const loadData = async () => {
         await api.get("alarmes")
-            .then(response => setAlarmes(response.data))
+            .then(response => handleData(response.data))
             .then(() => setLoading(false))
             .catch(err => console.log(err))
+    }
+
+    const handleData = (data) => {
+        const sortItems = (a, b) =>  a.alarmesAtuados.length > b.alarmesAtuados.length ? -1 : 1;
+        const sortedItems = data.sort(sortItems);
+
+        setAlarmes(sortedItems);
+
     }
 
 
@@ -34,7 +42,7 @@ function Alarmes() {
 
                 <CardWrapper>
 
-                    {alarmes.map((item, index) => <Alarme key={index} alarme={item} />)}
+                    {alarmes.map((item, index) => <Alarme key={index} alarme={item} position={ index+1}/>)}
 
                     {!alarmes.length > 0 ? <EmptyState /> : null}
 
