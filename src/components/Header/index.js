@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Wrapper } from "../Wrapper";
 import { StyledHeader, StyledNav, StyledList } from "./styles";
 import { Title, Subtitle, Link } from "../Text";

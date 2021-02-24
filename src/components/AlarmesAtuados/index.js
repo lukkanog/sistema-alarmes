@@ -5,6 +5,7 @@ import LoaderSpinner from "../Loader";
 import { AlarmeAtuado, CardWrapper } from "../Card";
 
 
+
 function AlarmesAtuados() {
     const [alarmes, setAlarmes] = useState([]);
     const [isLoading, setLoading] = useState(true);
@@ -28,7 +29,18 @@ function AlarmesAtuados() {
             .then(response => setAlarmes(response.data))
             .then(() => setLoading(false))
             .catch(err => setError(err.response.data))
+    }
 
+    const handleTextFilter = (e) => {
+        if (!e.target.value){
+            loadData();
+        }
+
+        const filteredList = [...alarmes].filter(item => {
+            return item.alarme.descricao.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+
+        setAlarmes(filteredList);
     }
 
     return (
@@ -36,9 +48,11 @@ function AlarmesAtuados() {
             <Wrapper.Container>
 
                 <LoaderSpinner visible={isLoading} text="Carregando alarmes atuados" />
+                
 
                 <label>
                     Ordenar por 
+                    <br/>
                     <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
                         <option value="idAlarmeAtuado">Ordenação padrão</option>
                         <option value="dataEntrada">Data de entrada</option>
@@ -47,6 +61,10 @@ function AlarmesAtuados() {
                         <option value="alarme.equipamento.nomeEquipamento">Descrição do equipamento</option> */}
                     </select>
                 </label>
+
+
+                <input onChange={handleTextFilter} type="text" name="search" id="search" placeholder="Insira a descrição do alarme procurado"></input>
+
                 <CardWrapper>
 
                     {alarmes.map((item, index) => {
