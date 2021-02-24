@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
     align-items: center;
     justify-content : center;
     padding: 2.5px 0;
+    z-index: 1;
 `;
 
 export const StyledNav = styled.nav`
